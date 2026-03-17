@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Software License Agreement – Prime Focus Uganda Limited</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brand-blue:#1a3d6e;--brand-cyan:#0ea5e9;--brand-orange:#f97316;
+    --ink:#0f1923;--muted:#64748b;--light-bg:#f8fafd;--white:#ffffff;
+    --border:#dde4ef;--section-bg:#f0f5fc;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'DM Sans',sans-serif;background:#eef3fb;color:var(--ink);line-height:1.7;}
+
+  /* HERO */
+  .hero{background:linear-gradient(135deg,#0b1e3a 0%,#1a3d6e 55%,#1e5a9b 100%);padding:52px 40px 72px;text-align:center;position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 30px,rgba(255,255,255,.02) 30px,rgba(255,255,255,.02) 31px);}
+  .hero-accent{position:absolute;top:0;right:0;width:300px;height:300px;background:radial-gradient(circle,rgba(14,165,233,.15) 0%,transparent 70%);pointer-events:none;}
+
+  /* LOGO PLACEHOLDER */
+  .hero-logo-wrap{display:flex;flex-direction:column;align-items:center;margin-bottom:32px;position:relative;}
+  .logo-upload-area{width:240px;height:90px;border:2px dashed rgba(255,255,255,.3);border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:border-color .2s,background .2s;position:relative;overflow:hidden;background:rgba(255,255,255,.05);}
+  .logo-upload-area:hover{border-color:var(--brand-cyan);background:rgba(14,165,233,.08);}
+  .logo-upload-area img{max-width:100%;max-height:100%;object-fit:contain;display:none;border-radius:8px;padding:6px;}
+  .logo-upload-area.has-logo img{display:block;}
+  .logo-upload-area.has-logo .logo-ph{display:none;}
+  .logo-ph{display:flex;flex-direction:column;align-items:center;gap:4px;pointer-events:none;}
+  .logo-ph-icon{font-size:1.5rem;opacity:.45;}
+  .logo-ph-label{font-size:.68rem;text-transform:uppercase;letter-spacing:.18em;color:rgba(255,255,255,.45);font-weight:600;}
+  .logo-ph-hint{font-size:.58rem;color:rgba(255,255,255,.22);letter-spacing:.08em;}
+  .logo-file-input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+  .logo-remove-btn{display:none;position:absolute;top:-9px;right:-9px;background:#ef4444;color:white;border:none;border-radius:50%;width:22px;height:22px;font-size:.7rem;cursor:pointer;align-items:center;justify-content:center;font-weight:700;z-index:10;}
+  .logo-upload-area.has-logo ~ .logo-remove-btn{display:flex;}
+  .logo-caption{font-size:.62rem;text-transform:uppercase;letter-spacing:.18em;color:rgba(255,255,255,.32);margin-top:8px;}
+
+  /* HERO TEXT */
+  .hero-tagline{font-size:.75rem;text-transform:uppercase;letter-spacing:.3em;color:rgba(255,255,255,.5);margin-bottom:16px;position:relative;}
+  .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(249,115,22,.15);border:1px solid rgba(249,115,22,.4);color:#fdba74;padding:6px 16px;border-radius:999px;font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-bottom:20px;position:relative;}
+  .hero-badge::before{content:'●';font-size:.5rem;color:#f97316;}
+  .hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:700;color:var(--white);line-height:1.2;position:relative;margin-bottom:12px;}
+  .hero-sub{color:rgba(255,255,255,.65);font-size:.95rem;font-weight:300;position:relative;}
+
+  /* PARTIES */
+  .parties-strip{background:var(--white);border-bottom:3px solid var(--brand-orange);padding:32px 40px;display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:center;max-width:1100px;margin:0 auto;}
+  .party-card{padding:20px 24px;border-radius:10px;border:1.5px solid var(--border);background:var(--light-bg);}
+  .party-card.licensor{border-left:4px solid var(--brand-blue);}
+  .party-card.licensee{border-left:4px solid var(--brand-orange);}
+  .party-label{font-size:.65rem;text-transform:uppercase;letter-spacing:.2em;color:var(--muted);font-weight:600;margin-bottom:6px;}
+  .party-name{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--brand-blue);margin-bottom:4px;}
+  .party-detail{font-size:.8rem;color:var(--muted);line-height:1.6;}
+  .party-detail strong{color:var(--ink);font-weight:500;}
+  .between-icon{text-align:center;background:var(--brand-blue);width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:.7rem;font-weight:700;letter-spacing:.15em;margin:0 auto;}
+
+  /* LAYOUT */
+  .wrapper{max-width:1100px;margin:0 auto;padding:40px 24px 80px;display:grid;grid-template-columns:260px 1fr;gap:32px;align-items:start;}
+
+  /* TOC */
+  .toc{background:var(--white);border-radius:14px;padding:24px 20px;border:1.5px solid var(--border);position:sticky;top:24px;box-shadow:0 4px 24px rgba(0,0,0,.05);}
+  .toc-title{font-size:.65rem;text-transform:uppercase;letter-spacing:.2em;color:var(--muted);font-weight:600;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border);}
+  .toc a{display:flex;align-items:baseline;gap:10px;text-decoration:none;color:var(--muted);font-size:.8rem;padding:6px 8px;border-radius:6px;transition:all .15s;line-height:1.3;}
+  .toc a:hover{background:var(--section-bg);color:var(--brand-blue);}
+  .toc a .num{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--brand-cyan);min-width:22px;font-weight:500;}
+
+  /* CONTENT */
+  .content{display:flex;flex-direction:column;gap:20px;}
+  .recitals-block{background:linear-gradient(135deg,#f0f5fc,#e8f0fb);border:1.5px solid #c8d8ef;border-radius:12px;padding:28px 32px;}
+  .recitals-block p{font-size:.9rem;color:#2d4a6e;line-height:1.8;}
+  .recitals-block p+p{margin-top:10px;}
+  .recitals-block strong{color:var(--brand-blue);}
+
+  /* SECTIONS */
+  .section{background:var(--white);border-radius:14px;border:1.5px solid var(--border);overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.04);}
+  .section-header{display:flex;align-items:center;gap:16px;padding:20px 28px;background:linear-gradient(90deg,var(--brand-blue) 0%,#1e4f8c 100%);cursor:pointer;user-select:none;}
+  .section-num{font-family:'DM Mono',monospace;font-size:.75rem;font-weight:500;color:var(--brand-cyan);background:rgba(14,165,233,.15);padding:3px 10px;border-radius:999px;border:1px solid rgba(14,165,233,.3);white-space:nowrap;}
+  .section-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:var(--white);flex:1;}
+  .section-chevron{color:rgba(255,255,255,.5);font-size:.8rem;transition:transform .25s;}
+  .section.open .section-chevron{transform:rotate(180deg);}
+  .section-body{display:none;padding:28px 32px;border-top:1px solid var(--border);}
+  .section.open .section-body{display:block;}
+
+  .sub{margin-bottom:22px;}
+  .sub:last-child{margin-bottom:0;}
+  .sub-title{font-weight:600;font-size:.9rem;color:var(--brand-blue);margin-bottom:8px;display:flex;align-items:center;gap:8px;}
+  .sub-title::before{content:'';display:inline-block;width:3px;height:14px;background:var(--brand-orange);border-radius:2px;}
+  .sub p{font-size:.875rem;color:#334155;line-height:1.75;}
+
+  .pill-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
+  .pill{background:var(--section-bg);border:1px solid var(--border);color:var(--brand-blue);font-size:.78rem;font-weight:500;padding:5px 14px;border-radius:999px;}
+  .pill.orange{background:#fff7ed;border-color:#fed7aa;color:#9a3412;}
+  .pill.green{background:#f0fdf4;border-color:#bbf7d0;color:#15803d;}
+
+  .check-list{list-style:none;margin-top:10px;display:flex;flex-direction:column;gap:6px;}
+  .check-list li{font-size:.875rem;color:#334155;padding:8px 12px;background:var(--light-bg);border-radius:7px;border-left:3px solid var(--brand-cyan);display:flex;align-items:flex-start;gap:10px;line-height:1.5;}
+  .check-list li::before{content:'→';color:var(--brand-cyan);font-weight:700;font-size:.75rem;margin-top:2px;flex-shrink:0;}
+  .check-list.red li{border-left-color:#f87171;}
+  .check-list.red li::before{content:'✗';color:#ef4444;}
+  .check-list.green li{border-left-color:#4ade80;}
+  .check-list.green li::before{content:'✓';color:#22c55e;}
+
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:10px;}
+  .info-card{background:var(--light-bg);border:1px solid var(--border);border-radius:10px;padding:16px;}
+  .info-card-label{font-size:.65rem;text-transform:uppercase;letter-spacing:.15em;color:var(--muted);font-weight:600;margin-bottom:6px;}
+  .info-card-value{font-size:.875rem;color:var(--ink);font-weight:500;}
+
+  .callout{border-radius:10px;padding:16px 20px;margin-top:12px;font-size:.85rem;line-height:1.65;display:flex;gap:12px;align-items:flex-start;}
+  .callout.warning{background:#fffbeb;border:1.5px solid #fde68a;color:#78350f;}
+  .callout.info{background:#eff6ff;border:1.5px solid #bfdbfe;color:#1e40af;}
+  .callout.danger{background:#fef2f2;border:1.5px solid #fecaca;color:#7f1d1d;}
+  .callout-icon{font-size:1rem;flex-shrink:0;margin-top:1px;}
+
+  .rt-table{width:100%;border-collapse:collapse;margin-top:12px;font-size:.84rem;}
+  .rt-table th{background:var(--brand-blue);color:white;font-weight:600;padding:10px 14px;text-align:left;font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;}
+  .rt-table th:first-child{border-radius:8px 0 0 0;}
+  .rt-table th:last-child{border-radius:0 8px 0 0;}
+  .rt-table td{padding:10px 14px;border-bottom:1px solid var(--border);color:#334155;}
+  .rt-table tr:last-child td{border-bottom:none;}
+  .rt-table tr:nth-child(even) td{background:var(--light-bg);}
+  .badge-sev{display:inline-block;padding:2px 10px;border-radius:999px;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;}
+  .badge-sev.critical{background:#fee2e2;color:#b91c1c;}
+  .badge-sev.high{background:#ffedd5;color:#c2410c;}
+  .badge-sev.medium{background:#fef9c3;color:#a16207;}
+  .badge-sev.low{background:#dcfce7;color:#15803d;}
+
+  .fees-table{width:100%;border-collapse:collapse;margin-top:14px;font-size:.84rem;}
+  .fees-table th{background:var(--brand-blue);color:white;padding:10px 16px;text-align:left;font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;}
+  .fees-table th:first-child{border-radius:8px 0 0 0;}
+  .fees-table th:last-child{border-radius:0 8px 0 0;}
+  .fees-table td{padding:11px 16px;border-bottom:1px solid var(--border);}
+  .fees-table tr:last-child td{border-bottom:none;}
+  .fees-table tr:nth-child(even) td{background:var(--light-bg);}
+
+  /* ORDER FORM */
+  .order-form{background:linear-gradient(135deg,#0b1e3a,#1a3d6e);border-radius:14px;padding:36px 40px;color:white;position:relative;overflow:hidden;}
+  .of-title{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;margin-bottom:4px;position:relative;}
+  .of-sub{font-size:.8rem;color:rgba(255,255,255,.5);margin-bottom:28px;position:relative;}
+  .of-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;position:relative;}
+  .of-field label{display:block;font-size:.65rem;text-transform:uppercase;letter-spacing:.15em;color:rgba(255,255,255,.5);font-weight:600;margin-bottom:6px;}
+  .of-input{width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.15);border-radius:8px;padding:10px 14px;color:white;font-family:'DM Sans',sans-serif;font-size:.875rem;outline:none;transition:border-color .2s;}
+  .of-input::placeholder{color:rgba(255,255,255,.25);}
+  .of-input:focus{border-color:var(--brand-cyan);}
+  .of-input option{background:#1a3d6e;color:#ffffff;}
+  .of-input option:disabled{color:rgba(255,255,255,.35);}
+  .of-field.full{grid-column:1/-1;}
+  .of-section-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.2em;color:var(--brand-cyan);font-weight:600;margin:20px 0 10px;grid-column:1/-1;border-top:1px solid rgba(255,255,255,.1);padding-top:18px;}
+  .of-checkbox-group{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:10px;}
+  .of-checkbox{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.12);border-radius:8px;padding:8px 14px;cursor:pointer;font-size:.82rem;transition:all .15s;}
+  .of-checkbox:hover{background:rgba(14,165,233,.15);border-color:var(--brand-cyan);}
+  .of-checkbox input{accent-color:var(--brand-cyan);}
+  .of-btn{margin-top:24px;background:linear-gradient(135deg,var(--brand-orange),#ea580c);color:white;border:none;padding:14px 36px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:600;cursor:pointer;letter-spacing:.04em;transition:opacity .2s;}
+  .of-btn:hover{opacity:.88;}
+
+  /* SIGS */
+  .sigs{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:4px;}
+  .sig-card{background:var(--white);border:1.5px solid var(--border);border-radius:12px;padding:28px 28px 24px;}
+  .sig-card.licensor{border-top:4px solid var(--brand-blue);}
+  .sig-card.licensee{border-top:4px solid var(--brand-orange);}
+  .sig-role{font-size:.65rem;text-transform:uppercase;letter-spacing:.2em;color:var(--muted);font-weight:600;margin-bottom:4px;}
+  .sig-entity{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--brand-blue);margin-bottom:20px;}
+  .sig-line{border-bottom:1.5px solid var(--ink);height:36px;margin-bottom:4px;}
+  .sig-field-label{font-size:.72rem;color:var(--muted);margin-bottom:12px;}
+  .sig-fields{display:flex;flex-direction:column;gap:10px;}
+  .sig-input-group label{display:block;font-size:.65rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:4px;}
+  .sig-input{width:100%;border:none;border-bottom:1px solid var(--border);padding:6px 0;font-family:'DM Sans',sans-serif;font-size:.875rem;outline:none;background:transparent;color:var(--ink);}
+  .sig-input:focus{border-bottom-color:var(--brand-blue);}
+
+  /* FOOTER */
+  .doc-footer{background:var(--white);border-top:3px solid var(--brand-blue);padding:28px 40px;display:flex;justify-content:space-between;align-items:center;max-width:1100px;margin:0 auto;font-size:.8rem;color:var(--muted);flex-wrap:wrap;gap:12px;}
+  .doc-footer strong{color:var(--brand-blue);}
+  .print-btn{position:fixed;bottom:28px;right:28px;background:var(--brand-blue);color:white;border:none;padding:12px 22px;border-radius:999px;font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:600;cursor:pointer;box-shadow:0 6px 24px rgba(26,61,110,.4);display:flex;align-items:center;gap:8px;transition:transform .15s,box-shadow .15s;}
+  .print-btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(26,61,110,.5);}
+
+  @media(max-width:860px){
+    .wrapper{grid-template-columns:1fr;}
+    .toc{position:static;}
+    .parties-strip{grid-template-columns:1fr;}
+    .between-icon{display:none;}
+    .two-col,.of-grid,.sigs{grid-template-columns:1fr;}
+  }
+  @media print{
+    .toc,.print-btn{display:none;}
+    .wrapper{grid-template-columns:1fr;}
+    .section-body{display:block!important;}
+    body{background:white;}
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-accent"></div>
+  <h1>PRIME FOCUS UGANDA</h1>
+  <div class="hero-tagline">Your Gateway to Efficiency</div>
+  <div class="hero-badge">Official Legal Document</div>
+  <h1>Software License Agreement</h1>
+  <p class="hero-sub">PrimeBooks &amp; Related Applications &nbsp;·&nbsp; Governed by the Laws of Uganda</p>
+</div>
+
+<!-- PARTIES -->
+<div class="parties-strip">
+  <div class="party-card licensor">
+    <div class="party-label">Licensor</div>
+    <div class="party-name">Prime Focus Uganda Limited</div>
+    <div class="party-detail">
+      <strong>BRN:</strong> 80020003378756<br>
+      Sentamu Kavule A, Nakawa Division<br>
+      Kampala, Uganda<br>
+      <strong>Email:</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="19696b70747c7f767a6c6a597e74787075377a7674">[email&#160;protected]</a><br>
+      <strong>Tel:</strong> +256 707 267051
+    </div>
+  </div>
+  <div class="between-icon">AND</div>
+  <div class="party-card licensee">
+    <div class="party-label">Licensee / Client</div>
+    <div class="party-name">Client Name: ___________________________</div>
+    <div class="party-detail">
+      <strong>BRN/NIN:</strong> ___________________________<br>
+      Address: ___________________________<br>
+      ___________________________<br>
+      <strong>Effective Date:</strong> ___________________________
+    </div>
+  </div>
+</div>
+
+<!-- WRAPPER -->
+<div class="wrapper">
+
+  <!-- TOC -->
+  <nav class="toc">
+    <div class="toc-title">Contents</div>
+    <a href="#s1"><span class="num">01</span>Definitions</a>
+    <a href="#s2"><span class="num">02</span>Grant of License</a>
+    <a href="#s3"><span class="num">03</span>Restrictions &amp; Prohibited Uses</a>
+    <a href="#s4"><span class="num">04</span>Intellectual Property</a>
+    <a href="#s5"><span class="num">05</span>Source Code</a>
+    <a href="#s6"><span class="num">06</span>Fees &amp; Payment</a>
+    <a href="#s7"><span class="num">07</span>Support &amp; Maintenance</a>
+    <a href="#s8"><span class="num">08</span>Data Security &amp; Privacy</a>
+    <a href="#s9"><span class="num">09</span>Warranties &amp; Disclaimers</a>
+    <a href="#s10"><span class="num">10</span>Limitation of Liability</a>
+    <a href="#s11"><span class="num">11</span>Indemnification</a>
+    <a href="#s12"><span class="num">12</span>Confidentiality</a>
+    <a href="#s13"><span class="num">13</span>Term &amp; Termination</a>
+    <a href="#s14"><span class="num">14</span>Anti-Piracy</a>
+    <a href="#s15"><span class="num">15</span>Updates</a>
+    <a href="#s16"><span class="num">16</span>Compliance with Laws</a>
+    <a href="#s17"><span class="num">17</span>General Provisions</a>
+    <a href="#s18"><span class="num">18</span>Acceptance</a>
+    <a href="#of"><span class="num">A</span>Order Form</a>
+    <a href="#sigs"><span class="num">✎</span>Signatures</a>
+  </nav>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <div class="recitals-block">
+      <p><strong>WHEREAS</strong> Prime Focus Uganda Limited is the developer and owner of proprietary business software solutions including but not limited to PrimeBooks (accounting and business management software) and related applications;</p>
+      <p><strong>WHEREAS</strong> Licensee desires to obtain a license to use such Software for its internal business operations;</p>
+      <p><strong>NOW, THEREFORE,</strong> in consideration of the mutual covenants and agreements herein, the parties agree as follows:</p>
+    </div>
+
+    <!-- S1 -->
+    <div class="section open" id="s1">
+      <div class="section-header" onclick="toggle(this)">
+        <span class="section-num">§ 01</span><span class="section-title">Definitions</span><span class="section-chevron">▼</span>
+      </div>
+      <div class="section-body">
+        <div class="sub">
+          <div class="sub-title">1.1 "Software" includes</div>
+          <div class="pill-list">
+            <span class="pill">PrimeBooks</span><span class="pill">Modules &amp; Plugins</span><span class="pill">Updates &amp; Patches</span>
+            <span class="pill">Documentation</span><span class="pill">.exe / .apk / .deb / .dmg</span><span class="pill">Web Applications</span>
+          </div>
+        </div>
+        <div class="sub">
+          <div class="sub-title">1.2 License Types</div>
+          <div class="two-col">
+            <div class="info-card"><div class="info-card-label">Desktop</div><div class="info-card-value">Standalone on specified devices</div></div>
+            <div class="info-card"><div class="info-card-label">Cloud / SaaS</div><div class="info-card-value">Hosted access via web browser</div></div>
+            <div class="info-card"><div class="info-card-label">Mobile</div><div class="info-card-value">Installation on mobile devices</div></div>
+            <div class="info-card"><div class="info-card-label">Enterprise</div><div class="info-card-value">Organization-wide deployment</div></div>
+          </div>
+        </div>
+        <div class="sub">
+          <div class="sub-title">1.3 – 1.6 Key Terms</div>
+          <p><strong>Authorized Users:</strong> Employees, contractors, or agents permitted to use the Software per the User Limit in the Order Form.<br>
+          <strong>Confidential Information:</strong> Source code, algorithms, trade secrets, business methods, pricing structures, and proprietary information.<br>
+          <strong>Support Period / Order Form:</strong> Duration of technical support and the schedule specifying License Type, Users, Fees, and special terms.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- S2 -->
+    <div class="section open" id="s2">
+      <div class="section-header" onclick="toggle(this)">
+        <span class="section-num">§ 02</span><span class="section-title">Grant of License</span><span class="section-chevron">▼</span>
+      </div>
+      <div class="section-body">
+        <div class="sub">
+          <div class="sub-title">2.1 License is</div>
+          <div class="pill-list">
+            <span class="pill orange">Limited</span><span class="pill orange">Non-exclusive</span><span class="pill orange">Non-transferable</span>
+            <span class="pill orange">Non-sublicensable</span><span class="pill orange">Revocable</span>
+          </div>
+        </div>
+        <div class="sub">
+          <div class="sub-title">2.2 Scope</div>
+          <div class="two-col">
+            <div class="info-card"><div class="info-card-label">Users</div><div class="info-card-value">As specified in Order Form</div></div>
+            <div class="info-card"><div class="info-card-label">Territory</div><div class="info-card-value">Uganda (or as specified)</div></div>
+            <div class="info-card"><div class="info-card-label">Devices</div><div class="info-card-value">As specified in License Type</div></div>
+            <div class="info-card"><div class="info-card-label">Purpose</div><div class="info-card-value">Internal business operations only</div></div>
+          </div>
+        </div>
+        <div class="sub">
+          <div class="sub-title">2.3 Cloud / SaaS</div>
+          <ul class="check-list">
+            <li>Dedicated tenant/schema with data isolation from other clients</li>
+            <li>Licensor manages infrastructure, backups, and security</li>
+            <li>Uptime SLA of 99.5% during business hours (12 AM – 12 PM EAT)</li>
+          </ul>
+        </div>
+        <div class="sub">
+          <div class="sub-title">2.4 Desktop / On-Premise</div>
+          <ul class="check-list">
+            <li>Installation on authorized devices only; hardware-bound licenses may apply</li>
+            <li>Transfer to replacement devices requires Licensor approval</li>
+            <li>Licensee responsible for local backups and data security</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- S3 -->
+    <div class="section" id="s3">
+      <div class="section-header" onclick="toggle(this)">
+        <span class="section-num">§ 03</span><span class="section-title">Restrictions &amp; Prohibited Uses</span><span class="section-chevron">▼</span>
+      </div>
+      <div class="section-body">
+        <div class="sub">
+          <div class="sub-title">3.1 Licensee shall NOT</div>
+          <ul class="check-list red">
+            <li><strong>Redistribute:</strong> Sell, rent, lease, sublicense, distribute, or transfer the Software</li>
+            <li><strong>Reverse Engineer:</strong> Decompile, disassemble, or attempt to derive source code</li>
+            <li><strong>Modify:</strong> Alter, adapt, translate, or create derivative works</li>
+            <li><strong>Circumvent:</strong> Remove or disable security features or licensing mechanisms</li>
+            <li><strong>Compete:</strong> Use Software to develop competing products or services</li>
+            <li><strong>Overuse:</strong> Exceed authorized number of users, devices, or usage limits</li>
+            <li><strong>Share Credentials:</strong> Share login credentials, access tokens, or authentication info</li>
+            <li><strong>Benchmark:</strong> Publicly disclose performance benchmarks without written consent</li>
+            <li><strong>Service Bureau:</strong> Provide Software access to third parties on a time-sharing basis</li>
+          </ul>
+        </div>
+        <div class="sub">
+          <div class="sub-title">3.2 PrimeBooks-Specific Prohibitions</div>
+          <ul class="check-list red">
+            <li>Processing financial data of third-party entities (unless licensed for such use)</li>
+            <li>Integration with unauthorized third-party accounting systems</li>
+            <li>Using tax calculation features outside Uganda without authorization</li>
+          </ul>
+        </div>
+        <div class="callout warning">
+          <span class="callout-icon">⚠</span>
+          <span><strong>Audit Rights (3.3):</strong> Licensor reserves the right to audit Licensee's use of the Software upon reasonable notice. Licensee shall cooperate fully.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- S4 -->
+    <div class="section" id="s4">
+      <div class="section-header" onclick="toggle(this)">
+        <span class="section-num">§ 04</span><span class="section-title">Intellectual Property Rights</span><span class="section-chevron">▼</span>
+      </div>
+      <div class="section-body">
+        <div class="sub">
+          <div class="sub-title">4.1 Prime Focus retains all rights to</div>
+          <div class="pill-list">
+            <span class="pill">Software &amp; Components</span><span class="pill">Source Code &amp; Algorithms</span>
+            <span class="pill">Trademarks &amp; Branding</span><span class="pill">Patents &amp; Copyrights</span><span class="pill">All Derivative Works</span>
+          </div>
+        </div>
+        <div class="sub">
+          <div class="sub-title">4.3 Licensee Data</div>
+          <ul class="check-list green">
+            <li>Licensee retains full ownership of all data entered into the Software</li>
+            <li>Licensor accesses Client Data only for support, maintenance, or as required by law</li>
+            <li>Data export functionality provided to prevent vendor lock-in</li>
+          </ul>
+        </div>
+        <div class="callout info">
+          <span class="callout-icon">ℹ</span>
+          <span><strong>4.4 Feedback:</strong> Any feedback or suggestions provided by Licensee may be freely used by Licensor without compensation or attribution.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- S5 -->
+    <div class="section" id="s5">
+      <div class="section-header" onclick="toggle(this)">
+        <span class="section-num">§ 05</span><span class="section-title">Source Code Provisions</span><span class="section-chevron">▼</span>
+      </div>
+      <div class="section-body">
+        <div class="callout danger">
+          <span class="callout-icon">🔒</span>
+          <span><strong>Default (5.1):</strong> This license does NOT include source code access. Only compiled/executable versions are provided unless a separate Source Code Access Agreement is executed.</span>
+        </div>
+        <div class="sub" style="margin-top:18px">
+          <div class="sub-title">5.2 Optional Access – Permitted Uses</div>
+          <ul class="check-list green">
+            <li>Internal review and audit for security purposes</li>
+            <li>Customization and integration with existing systems</li>
+            <li>Bug fixes and minor modifications (with Licensor notification)</li>
+          </ul>
+        </div>
+        <div class="sub">
+          <div class="sub-title">Escrow Release Triggers (Enterprise)</div>
+          <ul class="check-list">
+            <li>Licensor ceases business operations</li>
+            <li>Failure to provide critical support for 90+ consecutive days</li>
+            <li>Material breach uncured within 60 days</li>
+            <li>Mutual agreement of both parties</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- S6 -->
+    <div class="section" id="s6">
+      <div class="section-header" onclick="toggle(this)">
+        <span class="section-num">§ 06</span><span class="section-title">Fees &amp; Payment</span><span class="section-chevron">▼</span>
+      </div>
+      <div class="section-body">
+        <table class="fees-table">
+          <thead><tr><th>Fee Type</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Initial License Fee</strong></td><td>One-time payment for perpetual licenses or first-period subscription payment</td></tr>
+            <tr><td><strong>Subscription Fees</strong></td><td>Recurring monthly or annual fees for Cloud/SaaS licenses</td></tr>
+            <tr><td><strong>Support &amp; Maintenance</strong></td><td>Annual support fees — typically 20% of initial license fee</td></tr>
+            <tr><td><strong>Additional Users</strong></td><td>Per-user fees for exceeding initial user count</td></tr>
+            <tr><td><strong>Customization</strong></td><td>Bespoke development or integration work</td></tr>
+          </tbody>
+        </table>
+        <div class="sub" style="margin-top:18px">
+          <div class="sub-title">6.2 Payment Terms</div>
+          <ul class="check-list">
+            <li>Payment due within <strong>30 days</strong> of invoice date</li>
+            <li>Accepted: Bank transfer, MTN/Airtel Mobile Money, Cheque</li>
+            <li>Late payments subject to interest at maximum legal rate per month</li>
+            <li>Licenses suspended after <strong>15-day grace period</strong> of non-payment</li>
+          </ul>
+        </div>
+        <div class="callout warning">
+          <span class="callout-icon">⚠</span>
+          <span><strong>6.4 No Refunds:</strong> All fees are non-refundable except as required by law or as specified in Section 10. Taxes (VAT, withholding) are the Licensee's responsibility.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- S7 -->
+    <div class="section" id="s7">
+      <div class="section-header" onclick="toggle(this)">
+        <span class="section-num">§ 07</span><span class="section-title">Support &amp; Maintenance</span><span class="section-chevron">▼</span>
+      </div>
+      <div class="section-body">
+        <div class="sub">
+          <div class="sub-title">7.1 Included (5 AM – 12 PM EAT, Mon–Sun excl. public holidays)</div>
+          <div class="pill-list">
+            <span class="pill green">Technical Support</span><span class="pill green">Bug Fixes</span>
+            <span class="pill green">Security Updates</span><span class="pill green">Software Updates</span><span class="pill green">Documentation</span>
+          </div>
+        </div>
+        <div class="sub">
+          <div class="sub-title">7.2 Response Time SLA</div>
+          <table class="rt-table">
+            <thead><tr><th>Priority</th><th>Description</th><th>Response Time</th></tr></thead>
+            <tbody>
+              <tr><td><span class="badge-sev critical">Critical</span></td><td>System down</td><td><strong>4 business hours</strong></td></tr>
+              <tr><td><span class="badge-sev high">High</span></td><td>Major feature broken</td><td><strong>1 business day</strong></td></tr>
+              <tr><td><span class="badge-sev medium">Medium</span></td><td>Workaround available</td><td><strong>3 business days</strong></td></tr>
+              <tr><td><span class="badge-sev low">Low</span></td><td>Cosmetic issues</td><td><strong>5 business days</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="sub">
+          <div class="sub-title">7.3 Excluded Support</div>
+          <ul class="check-list red">
+            <li>Issues caused by unauthorized modifications</li>
+            <li>Problems with third-party software or hardware</li>
+            <li>Data recovery due to Licensee negligence</li>
+            <li>User training beyond initial onboarding</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- S8 -->
+    <div class="section" id="s8">
+      <div class="section-header" onclick="toggle(this)">
+        <span class="section-num">§ 08</span><span class="section-title">Data Security &amp; Privacy</span><span class="section-chevron">▼</span>
+      </div>
+      <div class="section-body">
+        <div class="sub">
+          <div class="sub-title">8.1 Security Measures</div>
+          <div class="pill-list">
+            <span class="pill">AES-256 at Rest</span><span class="pill">TLS 1.2+ in Transit</span>
+            <span class="pill">Hardware-Bound Keys</span><span class="pill">Regular Security Audits</span>
+            <span class="pill">Access Controls</span><span class="pill">Encrypted Backups</span>
+          </div>
+        </div>
+        <div class="sub">
+          <div class="sub-title">8.2 Data Sovereignty</div>
+          <ul class="check-list green">
+            <li>Compliant with Uganda Data Protection and Privacy Act, 2019</li>
+            <li>Data will not be transferred outside Uganda without Licensee consent</li>
+          </ul>
+        </div>
+        <div class="sub">
+          <div class="sub-title">8.4 Breach Notification</div>
+          <ul class="check-list">
+            <li>Notification to Licensee within <strong>72 hours</strong> of breach discovery</li>
+            <li>Full details of breach and affected data provided</li>
+            <li>Remediation measures implemented; regulatory reporting supported</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- S9 -->
+    <div class="section" id="s9">
+      <div class="section-header" onclick="toggle(this)">
+        <span class="section-num">§ 09</span><span class="section-title">Warranties &amp; Disclaimers</span><span class="section-chevron">▼</span>
+      </div>
+      <div class="section-body">
+        <div class="sub">
+          <div class="sub-title">9.1 Limited Warranty (90 Days from Delivery)</div>
+          <ul class="check-list green">
+            <li>Software substantially conforms to published documentation</li>
+            <li>Licensor has the right to license the Software as specified</li>
+            <li>Software does not infringe third-party IP rights (to Licensor's knowledge)</li>
+          </ul>
+        </div>
+        <div class="callout danger">
+          <span class="callout-icon">⚠</span>
+          <span><strong>9.3 DISCLAIMER:</strong> Except as in 9.1, Software is provided "AS IS" — no warranties of merchantability, fitness for purpose, accuracy, uninterrupted operation, or compatibility.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- S10 -->
+    <div class="section" id="s10">
+      <div class="section-header" onclick="toggle(this)">
+        <span class="section-num">§ 10</span><span class="section-title">Limitation of Liability</span><span class="section-chevron">▼</span>
+      </div>
+      <div class="section-body">
+        <div class="callout danger">
+          <span class="callout-icon">🔒</span>
+          <span><strong>10.1 Liability Cap:</strong> Licensor's total liability shall not exceed fees paid by Licensee in the 12 months preceding the claim.</span>
+        </div>
+        <div class="sub" style="margin-top:16px">
+          <div class="sub-title">10.2 Excluded Damages (no liability for)</div>
+          <ul class="check-list red">
+            <li>Indirect, incidental, special, or consequential damages</li>
+            <li>Loss of profits, revenue, or business opportunities</li>
+            <li>Loss or corruption of data (except Licensor's gross negligence)</li>
+            <li>Business interruption, downtime, or substitute product costs</li>
+          </ul>
+        </div>
+        <div class="sub">
+          <div class="sub-title">10.3 Cap Does NOT Apply to</div>
+          <ul class="check-list green">
+            <li>Death or personal injury caused by Licensor's negligence</li>
+            <li>Fraud or fraudulent misrepresentation</li>
+            <li>Breaches of confidentiality or IP indemnification obligations</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- S11 -->
+    <div class="section" id="s11">
+      <div class="section-header" onclick="toggle(this)">
+        <span class="section-num">§ 11</span><span class="section-title">Indemnification</span><span class="section-chevron">▼</span>
+      </div>
+      <div class="section-body">
+        <div class="sub">
+          <div class="sub-title">11.1 Licensor Indemnifies Licensee Against IP Claims</div>
+          <p>Licensor defends and holds harmless Licensee from third-party IP infringement claims, provided Licensee promptly notifies Licensor and cooperates. Remedies: obtain continued-use rights, modify Software, or refund prepaid fees.</p>
+        </div>
+        <div class="sub">
+          <div class="sub-title">11.2 Licensee Indemnifies Licensor Against</div>
+          <ul class="check-list red">
+            <li>Misuse of Software or violation of license restrictions</li>
+            <li>Licensee's data, content, or violation of applicable laws</li>
+            <li>Unauthorized access or use of Licensee's account</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- S12 -->
+    <div class="section" id="s12">
+      <div class="section-header" onclick="toggle(this)">
+        <span class="section-num">§ 12</span><span class="section-title">Confidentiality</span><span class="section-chevron">▼</span>
+      </div>
+      <div class="section-body">
+        <div class="sub">
+          <div class="sub-title">12.2 Obligations</div>
+          <ul class="check-list">
+            <li>Use Confidential Information only for purposes of this Agreement</li>
+            <li>Protect with same degree of care as own confidential information</li>
+            <li>Limit disclosure to employees/contractors with need to know</li>
+            <li>No disclosure to third parties without prior written consent</li>
+          </ul>
+        </div>
+        <div class="callout info">
+          <span class="callout-icon">ℹ</span>
+          <span><strong>12.4 Duration:</strong> Confidentiality obligations survive termination for <strong>5 years</strong>.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- S13 -->
+    <div class="section" id="s13">
+      <div class="section-header" onclick="toggle(this)">
+        <span class="section-num">§ 13</span><span class="section-title">Term &amp; Termination</span><span class="section-chevron">▼</span>
+      </div>
+      <div class="section-body">
+        <div class="two-col">
+          <div class="info-card"><div class="info-card-label">Perpetual</div><div class="info-card-value">Effective until terminated per §13</div></div>
+          <div class="info-card"><div class="info-card-label">Subscription</div><div class="info-card-value">Auto-renews; cancel 30 days before renewal</div></div>
+          <div class="info-card"><div class="info-card-label">For Convenience</div><div class="info-card-value">30 days written notice (subscriptions only; no refund)</div></div>
+          <div class="info-card"><div class="info-card-label">For Cause</div><div class="info-card-value">Material breach uncured within 30 days</div></div>
+        </div>
+        <div class="sub" style="margin-top:16px">
+          <div class="sub-title">13.4 Immediate Termination if Licensee</div>
+          <ul class="check-list red">
+            <li>Violates IP rights or license restrictions</li>
+            <li>Reverse engineers or attempts unauthorized source code access</li>
+            <li>Uses Software for illegal purposes or poses security risk</li>
+          </ul>
+        </div>
+        <div class="sub">
+          <div class="sub-title">13.5 Upon Termination</div>
+          <ul class="check-list">
+            <li>All licenses and access rights immediately cease</li>
+            <li>Licensee must uninstall and delete all copies</li>
+            <li>Licensee may export Client Data within <strong>30 days</strong> (cloud)</li>
+            <li>Sections 4, 9.3, 10, 12, and 14 survive termination</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- S14 -->
+    <div class="section" id="s14">
+      <div class="section-header" onclick="toggle(this)">
+        <span class="section-num">§ 14</span><span class="section-title">Compliance &amp; Anti-Piracy</span><span class="section-chevron">▼</span>
+      </div>
+      <div class="section-body">
+        <div class="sub">
+          <div class="sub-title">14.1 Technical Protection Measures</div>
+          <div class="pill-list">
+            <span class="pill">Hardware-Bound License Keys</span><span class="pill">Online Activation</span>
+            <span class="pill">Usage Monitoring</span><span class="pill">Tamper Detection</span>
+          </div>
+        </div>
+        <div class="callout danger">
+          <span class="callout-icon">⚠</span>
+          <span><strong>14.2 Violations</strong> constitute material breach, copyright infringement under Ugandan law, and a potential criminal offense. Licensor may pursue immediate termination, injunctive relief, actual and statutory damages, attorney's fees, and criminal prosecution.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- S15 -->
+    <div class="section" id="s15">
+      <div class="section-header" onclick="toggle(this)">
+        <span class="section-num">§ 15</span><span class="section-title">Updates &amp; Modifications</span><span class="section-chevron">▼</span>
+      </div>
+      <div class="section-body">
+        <div class="two-col">
+          <div class="info-card"><div class="info-card-label">Patches</div><div class="info-card-value">Bug fixes &amp; security updates — free during Support Period</div></div>
+          <div class="info-card"><div class="info-card-label">Minor Versions</div><div class="info-card-value">New features — free during Support Period</div></div>
+          <div class="info-card"><div class="info-card-label">Major Versions</div><div class="info-card-value">Significant rewrites — may require upgrade fee</div></div>
+          <div class="info-card"><div class="info-card-label">Legacy Versions</div><div class="info-card-value">May become unsupported after 2 years</div></div>
+        </div>
+        <div class="callout info" style="margin-top:14px">
+          <span class="callout-icon">ℹ</span>
+          <span><strong>15.3:</strong> Licensor may modify this Agreement upon 30 days' notice. Continued use constitutes acceptance. Material changes require Licensee consent for perpetual licenses.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- S16 -->
+    <div class="section" id="s16">
+      <div class="section-header" onclick="toggle(this)">
+        <span class="section-num">§ 16</span><span class="section-title">Compliance with Laws</span><span class="section-chevron">▼</span>
+      </div>
+      <div class="section-body">
+        <div class="pill-list">
+          <span class="pill">Uganda Companies Act, 2012</span><span class="pill">Data Protection &amp; Privacy Act, 2019</span>
+          <span class="pill">Computer Misuse Act, 2011</span><span class="pill">Tax Laws &amp; Regulations</span><span class="pill">Anti-Corruption Laws</span>
+        </div>
+        <div class="callout warning" style="margin-top:14px">
+          <span class="callout-icon">⚠</span>
+          <span><strong>16.3 Tax Compliance:</strong> Licensee is responsible for configuring tax rates correctly. Licensor provides tools but does not guarantee tax compliance. Consult tax professionals.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- S17 -->
+    <div class="section" id="s17">
+      <div class="section-header" onclick="toggle(this)">
+        <span class="section-num">§ 17</span><span class="section-title">General Provisions</span><span class="section-chevron">▼</span>
+      </div>
+      <div class="section-body">
+        <div class="two-col">
+          <div class="info-card"><div class="info-card-label">Governing Law</div><div class="info-card-value">Republic of Uganda</div></div>
+          <div class="info-card"><div class="info-card-label">Language</div><div class="info-card-value">English (controlling)</div></div>
+          <div class="info-card"><div class="info-card-label">Assignment</div><div class="info-card-value">Licensee requires Licensor written consent</div></div>
+          <div class="info-card"><div class="info-card-label">Electronic Signatures</div><div class="info-card-value">Valid and binding</div></div>
+        </div>
+        <div class="sub" style="margin-top:16px">
+          <div class="sub-title">17.12 Dispute Resolution Ladder</div>
+          <ul class="check-list">
+            <li><strong>Step 1 – Negotiation:</strong> Good faith negotiation between senior management (30 days)</li>
+            <li><strong>Step 2 – Mediation:</strong> Uganda Mediation Centre or similar body</li>
+            <li><strong>Step 3 – Arbitration:</strong> Binding arbitration under Uganda Arbitration &amp; Conciliation Act, seat in Kampala</li>
+            <li><strong>Step 4 – Litigation:</strong> Courts of Kampala, Uganda — exclusive jurisdiction, last resort only</li>
+          </ul>
+        </div>
+        <div class="sub">
+          <div class="sub-title">17.7 Notices</div>
+          <p>Email: <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3c4f494c4c534e487c4c4e5551595a535f494f12495b">[email&#160;protected]</a></strong> (Licensor). Effective upon receipt for email; 3 days after mailing for post.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- S18 -->
+    <div class="section open" id="s18">
+      <div class="section-header" onclick="toggle(this)">
+        <span class="section-num">§ 18</span><span class="section-title">Acceptance</span><span class="section-chevron">▼</span>
+      </div>
+      <div class="section-body">
+        <div class="callout info">
+          <span class="callout-icon">📋</span>
+          <span>By signing, executing an Order Form, downloading, creating an account, or using the Software, Licensee agrees to be bound by this Agreement. <strong>LICENSEE ACKNOWLEDGES THAT IT HAS READ, UNDERSTANDS, AND AGREES TO BE BOUND BY ALL TERMS AND CONDITIONS.</strong></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ORDER FORM -->
+    <div class="order-form" id="of">
+      <div class="of-title">Schedule A: Order Form</div>
+      <div class="of-sub">Complete all fields &nbsp;·&nbsp; Attach to signed Agreement</div>
+      <div class="of-grid">
+        <div class="of-section-label">License Details</div>
+        <div class="of-field">
+          <label>License Type</label>
+          <select id="of_license_type" class="of-input" style="cursor:pointer">
+            <option value="" disabled selected>Select…</option>
+            <option>Perpetual</option><option>Annual Subscription</option><option>Monthly Subscription</option>
+          </select>
+        </div>
+        <div class="of-field">
+          <label>Software Product</label>
+          <select id="of_product" class="of-input" style="cursor:pointer">
+            <option value="" disabled selected>Select…</option>
+            <option>PrimeBooks Desktop</option><option>PrimeBooks Cloud</option><option>Other</option>
+          </select>
+        </div>
+        <div class="of-field"><label>Number of Authorized Users</label><input class="of-input" id="of_users" type="number" placeholder="e.g. 5" min="1"></div>
+        <div class="of-field"><label>Number of Devices (Desktop)</label><input class="of-input" id="of_devices" type="number" placeholder="e.g. 3" min="1"></div>
+        <div class="of-field"><label>Number of Companies / Entities</label><input class="of-input" id="of_entities" type="number" placeholder="e.g. 1" min="1"></div>
+        <div class="of-field"><label>Initial License Term</label><input class="of-input" id="of_term" type="text" placeholder="e.g. 12 months"></div>
+
+        <div class="of-section-label">Pricing (UGX)</div>
+        <div class="of-field"><label>Initial License Fee</label><input id="of_init_fee" class="of-input" type="text" placeholder="UGX 0"></div>
+        <div class="of-field"><label>Monthly / Annual Subscription Fee</label><input id="of_sub_fee" class="of-input" type="text" placeholder="UGX 0"></div>
+        <div class="of-field"><label>Annual Support &amp; Maintenance Fee</label><input id="of_support_fee" class="of-input" type="text" placeholder="UGX 0"></div>
+        <div class="of-field"><label>Implementation / Training Fee</label><input id="of_impl_fee" class="of-input" type="text" placeholder="UGX 0"></div>
+        <div class="of-field full"><label>Total Amount Due</label><input id="of_total" class="of-input" type="text" placeholder="UGX 0"></div>
+
+        <div class="of-section-label">Special Terms &amp; Add-ons</div>
+        <div class="of-checkbox-group">
+          <label class="of-checkbox"><input id="of_cb_src" type="checkbox"> Source Code Access</label>
+          <label class="of-checkbox"><input id="of_cb_escrow" type="checkbox"> Source Code Escrow</label>
+          <label class="of-checkbox"><input id="of_cb_dedsupp" type="checkbox"> Dedicated Support</label>
+          <label class="of-checkbox"><input id="of_cb_custdev" type="checkbox"> Custom Development</label>
+          <label class="of-checkbox"><input id="of_cb_premium" type="checkbox"> Premium 24/7 Support</label>
+        </div>
+
+        <div class="of-section-label">Dates &amp; Timeline</div>
+        <div class="of-field"><label>Delivery Date</label><input id="of_delivery" class="of-input" type="date"></div>
+        <div class="of-field"><label>Support Period</label><input id="of_support_period" class="of-input" type="text" placeholder="e.g. 1 year from delivery"></div>
+        <div class="of-field"><label>Implementation Timeline</label><input id="of_impl_timeline" class="of-input" type="text" placeholder="e.g. 2 weeks"></div>
+        <div class="of-field">
+          <label>Payment Schedule</label>
+          <select id="of_payment_sched" class="of-input" style="cursor:pointer">
+            <option value="" disabled selected>Select…</option>
+            <option>Full payment upon signing</option><option>50% down, balance in 30 days</option><option>Custom arrangement</option>
+          </select>
+        </div>
+      </div>
+      <button class="of-btn" onclick="sendOrderForm()">📧 Send Order Form to Prime Focus</button>
+    </div>
+
+    <!-- SIGNATURES -->
+    <div id="sigs">
+      <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--brand-blue);margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--brand-orange);">Signatures</div>
+      <div class="sigs">
+        <div class="sig-card licensor">
+          <div class="sig-role">Licensor</div>
+          <div class="sig-entity">Prime Focus Uganda Limited</div>
+          <div class="sig-line"></div>
+          <div class="sig-field-label">Signature above</div>
+          <div class="sig-fields">
+            <div class="sig-input-group"><label>Authorized Representative Name</label><input class="sig-input" type="text" placeholder="Full Name"></div>
+            <div class="sig-input-group"><label>Title / Position</label><input class="sig-input" type="text" placeholder="Director / CEO"></div>
+            <div class="sig-input-group"><label>Date</label><input class="sig-input" type="date"></div>
+          </div>
+        </div>
+        <div class="sig-card licensee">
+          <div class="sig-role">Licensee / Client</div>
+          <div class="sig-entity">Client Company Name</div>
+          <div class="sig-line"></div>
+          <div class="sig-field-label">Signature above</div>
+          <div class="sig-fields">
+            <div class="sig-input-group"><label>Authorized Representative Name</label><input class="sig-input" type="text" placeholder="Full Name"></div>
+            <div class="sig-input-group"><label>Title / Position</label><input class="sig-input" type="text" placeholder="Director / CEO"></div>
+            <div class="sig-input-group"><label>Date</label><input class="sig-input" type="date"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /content -->
+</div><!-- /wrapper -->
+
+<!-- FOOTER -->
+<div class="doc-footer">
+  <div><strong>Prime Focus Uganda Limited</strong> &nbsp;·&nbsp; URA Exit Road, Nakawa Small Gate, Kampala, Uganda</div>
+  <div>+256 707 267051 &nbsp;·&nbsp; <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c2b2b0abafa7a4ada1b7b182a5afa3abaeeca1adaf">[email&#160;protected]</a></div>
+  <div style="font-family:'DM Mono',monospace;font-size:.72rem;color:#94a3b8;">BRN: 80020003378756</div>
+</div>
+
+<button class="print-btn" onclick="window.print()">🖨 Print Agreement</button>
+
+<script>
+  function toggle(header) {
+    header.parentElement.classList.toggle('open');
+  }
+
+  function uploadLogo(event) {
+    var file = event.target.files[0];
+    if (!file) return;
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      document.getElementById('logoImg').src = e.target.result;
+      document.getElementById('logoArea').classList.add('has-logo');
+      document.getElementById('logoRemoveBtn').style.display = 'flex';
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function removeLogo() {
+    document.getElementById('logoImg').src = '';
+    document.getElementById('logoInput').value = '';
+    document.getElementById('logoArea').classList.remove('has-logo');
+    document.getElementById('logoRemoveBtn').style.display = 'none';
+  }
+
+  function val(id) {
+    var el = document.getElementById(id);
+    if (!el) return '';
+    return (el.value || '').trim();
+  }
+
+  function sendOrderForm() {
+    var licenseType    = val('of_license_type');
+    var product        = val('of_product');
+    var users          = val('of_users');
+    var devices        = val('of_devices');
+    var entities       = val('of_entities');
+    var term           = val('of_term');
+    var initFee        = val('of_init_fee');
+    var subFee         = val('of_sub_fee');
+    var supportFee     = val('of_support_fee');
+    var implFee        = val('of_impl_fee');
+    var total          = val('of_total');
+    var delivery       = val('of_delivery');
+    var supportPeriod  = val('of_support_period');
+    var implTimeline   = val('of_impl_timeline');
+    var paymentSched   = val('of_payment_sched');
+
+    var addons = [];
+    if (document.getElementById('of_cb_src')     && document.getElementById('of_cb_src').checked)     addons.push('Source Code Access');
+    if (document.getElementById('of_cb_escrow')  && document.getElementById('of_cb_escrow').checked)  addons.push('Source Code Escrow');
+    if (document.getElementById('of_cb_dedsupp') && document.getElementById('of_cb_dedsupp').checked) addons.push('Dedicated Support');
+    if (document.getElementById('of_cb_custdev') && document.getElementById('of_cb_custdev').checked) addons.push('Custom Development');
+    if (document.getElementById('of_cb_premium') && document.getElementById('of_cb_premium').checked) addons.push('Premium 24/7 Support');
+
+    var body =
+      'SOFTWARE LICENSE ORDER FORM' +
+      '%0A' + '='.repeat(40) +
+      '%0A%0ALICENSE DETAILS' +
+      '%0ALicense Type: '      + (licenseType || 'Not specified') +
+      '%0ASoftware Product: '  + (product     || 'Not specified') +
+      '%0AAuthorized Users: '  + (users       || 'Not specified') +
+      '%0ADevices (Desktop): ' + (devices     || 'Not specified') +
+      '%0ACompanies/Entities: '+ (entities    || 'Not specified') +
+      '%0AInitial Term: '      + (term        || 'Not specified') +
+      '%0A%0APRICING (UGX)' +
+      '%0AInitial License Fee: '         + (initFee     || 'Not specified') +
+      '%0AMonthly/Annual Subscription: ' + (subFee      || 'Not specified') +
+      '%0ASupport & Maintenance: '       + (supportFee  || 'Not specified') +
+      '%0AImplementation/Training: '     + (implFee     || 'Not specified') +
+      '%0ATotal Amount Due: '            + (total       || 'Not specified') +
+      '%0A%0ADATES & TIMELINE' +
+      '%0ADelivery Date: '          + (delivery       || 'Not specified') +
+      '%0ASupport Period: '         + (supportPeriod  || 'Not specified') +
+      '%0AImplementation Timeline: '+ (implTimeline   || 'Not specified') +
+      '%0APayment Schedule: '       + (paymentSched   || 'Not specified') +
+      '%0A%0ASPECIAL TERMS / ADD-ONS' +
+      '%0A' + (addons.length > 0 ? addons.join(', ') : 'None selected') +
+      '%0A%0A' + '='.repeat(40) +
+      '%0ASent via Prime Focus Software License Agreement Form';
+
+    var subject = encodeURIComponent('Software License Order Form – Prime Focus Uganda');
+    var mailto = 'mailto:primefocus.go@gmail.com?subject=' + subject + '&body=' + body;
+    window.location.href = mailto;
+  }
+</script>
+</body>
+</html>
